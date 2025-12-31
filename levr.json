@@ -4,8 +4,8 @@
   "name": "Calculator",
   "description": "A simple calculator website, with an interactive tool, and also an income calculator for residents of EU countries.",
   "siteType": "one-page",
-  "colorScheme": "coral",
-  "font": "Albert Sans",
+  "colorScheme": "amber",
+  "font": "Urbanist",
   "tags": [
     "calculator",
     "tool",
@@ -13,6 +13,6 @@
   ],
   "tools": [],
   "model": "gemini-2.5-flash",
-  "createdAt": 1767211496095,
-  "updatedAt": 1767211496095
+  "createdAt": 1767211603751,
+  "updatedAt": 1767211603751
 }
