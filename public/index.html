@@ -3,46 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A simple calculator website, with an interactive tool, and also an income calculator for residents of EU countries.">
-    <meta name="keywords" content="calculator, tool, maths, EU income, finance, online calculator, simple math">
-    <title>Calculator - Simplify Your Numbers</title>
+    <meta name="description" content="Calculator: A simple calculator website, with an interactive tool, and also an income calculator for residents of EU countries.">
+    <meta name="keywords" content="calculator, tool, maths, income, EU, finance, simple calculator">
+    <title>Calculator - Your Essential Calculation Tools</title>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-primary: #d97706; /* Amber-600 */
-            --color-primary-dark: #b45309; /* Amber-700 */
+            --color-primary: #d97706; /* Amber-700 */
+            --color-primary-dark: #b45309; /* Amber-800 */
             --color-primary-light: #fcd34d; /* Amber-300 */
-            --color-text: #1f2937; /* Gray-800 */
-            --color-text-light: #4b5563; /* Gray-600 */
-            --color-background: #f9fafb; /* Gray-50 */
-            --color-background-secondary: #ffffff; /* White */
-            --color-border: #e5e7eb; /* Gray-200 */
-            --color-success: #10b981; /* Green-500 */
-            --color-error: #ef4444; /* Red-500 */
+            --color-accent: #1e40af; /* Blue-800 for contrast */
+            --color-text: #333;
+            --color-text-light: #555;
+            --color-background: #fdfaf6; /* Light creamy background */
+            --color-background-alt: #fff;
+            --color-border: #e2e8f0;
+            --color-success: #10b981; /* Green */
+            --color-error: #ef4444; /* Red */
 
-            --font-primary: 'Urbanist', sans-serif;
+            --font-family-primary: 'Urbanist', sans-serif;
+            --font-size-base: 1rem;
+            --font-size-sm: 0.875rem;
+            --font-size-md: 1.125rem;
+            --font-size-lg: 1.5rem;
+            --font-size-xl: 2.25rem;
+            --font-size-2xl: 3rem;
 
-            --padding-section: 80px;
-            --container-width: 1200px;
-            --border-radius-sm: 6px;
-            --border-radius-md: 10px;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 4rem;
 
-            --transition-speed: 0.3s ease;
+            --border-radius-sm: 0.25rem;
+            --border-radius-md: 0.5rem;
+            --box-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --box-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+            scroll-behavior: smooth;
         }
 
-        /* Base Styles */
-        * {
+        /* Base Reset & Typography */
+        *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: var(--font-primary);
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-base);
             line-height: 1.6;
             color: var(--color-text);
             background-color: var(--color-background);
@@ -50,65 +61,72 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-md);
+        }
+
+        h1 { font-size: var(--font-size-2xl); }
+        h2 { font-size: var(--font-size-xl); }
+        h3 { font-size: var(--font-size-lg); }
+        p { margin-bottom: var(--spacing-md); }
+
         a {
             color: var(--color-primary);
             text-decoration: none;
-            transition: color var(--transition-speed);
+            transition: color 0.3s ease;
         }
 
         a:hover {
             color: var(--color-primary-dark);
+            text-decoration: underline;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 0.8em;
-            color: var(--color-text);
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
-        h1 { font-size: 3.2em; }
-        h2 { font-size: 2.5em; }
-        h3 { font-size: 1.8em; }
-        p { margin-bottom: 1em; }
-
+        /* Utility Classes */
         .container {
-            max-width: var(--container-width);
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 var(--spacing-md);
         }
+
+        .text-center { text-align: center; }
 
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 28px;
-            font-size: 1.1em;
-            font-weight: 600;
+            display: inline-block;
+            padding: var(--spacing-sm) var(--spacing-md);
             border-radius: var(--border-radius-md);
+            font-weight: 600;
+            text-align: center;
             cursor: pointer;
-            transition: all var(--transition-speed);
+            transition: all 0.3s ease;
             border: none;
             text-decoration: none;
-            text-align: center;
         }
 
         .btn-primary {
             background-color: var(--color-primary);
             color: #fff;
-            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.3);
         }
 
         .btn-primary:hover {
             background-color: var(--color-primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4);
+            box-shadow: var(--box-shadow-md);
         }
 
         .btn-secondary {
-            background-color: var(--color-background-secondary);
+            background-color: transparent;
             color: var(--color-primary);
             border: 2px solid var(--color-primary);
+            padding: calc(var(--spacing-sm) - 2px) calc(var(--spacing-md) - 2px);
         }
 
         .btn-secondary:hover {
@@ -116,60 +134,68 @@
             color: var(--color-primary-dark);
             border-color: var(--color-primary-dark);
             transform: translateY(-2px);
+            box-shadow: var(--box-shadow-md);
         }
 
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            width: 100%;
-            background-color: var(--color-background-secondary);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            padding: 15px 0;
-            z-index: 1000;
-        }
-
-        .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8em;
-            font-weight: 700;
+        .icon {
+            font-size: var(--font-size-lg);
             color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
         }
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-        }
-
-        .nav-links li {
-            margin-left: 30px;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            color: var(--color-text-light);
-            padding: 5px 0;
+        /* Section Styling */
+        section {
+            padding: var(--spacing-2xl) 0;
             position: relative;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--color-primary);
-            transition: width var(--transition-speed);
+        section:nth-of-type(even) {
+            background-color: var(--color-background-alt);
         }
 
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
+        /* Navigation */
+        .header-nav {
+            position: sticky;
+            top: 0;
             width: 100%;
+            background-color: var(--color-background-alt);
+            box-shadow: var(--box-shadow-md);
+            z-index: 1000;
+            padding: var(--spacing-sm) 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .logo {
+            font-size: var(--font-size-lg);
+            font-weight: 700;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: var(--spacing-lg);
+        }
+
+        .nav-links a {
+            color: var(--color-text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+            text-decoration: none;
         }
 
         .menu-toggle {
@@ -179,282 +205,345 @@
             width: 30px;
             height: 20px;
             justify-content: space-between;
+            padding: 0;
+            border: none;
+            background: transparent;
         }
 
-        .menu-toggle span {
-            display: block;
+        .menu-toggle .bar {
             width: 100%;
             height: 3px;
             background-color: var(--color-text);
-            border-radius: 3px;
-            transition: all var(--transition-speed);
+            border-radius: 1px;
+            transition: all 0.3s ease;
         }
 
-        /* Sections */
-        section {
-            padding: var(--padding-section) 0;
-            position: relative;
-        }
-
+        /* Hero Section */
         #hero {
-            padding-top: calc(var(--padding-section) + 80px); /* Adjust for fixed nav */
-            background: linear-gradient(135deg, var(--color-background), #f0f4f8);
-            min-height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1542382025-28b3c67926e2?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
             display: flex;
             align-items: center;
-            text-align: center;
+            min-height: 80vh;
+            padding: var(--spacing-2xl) 0;
         }
 
-        #hero .container {
-            max-width: 900px;
+        #hero .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
         }
 
         #hero h1 {
-            font-size: 3.8em;
-            margin-bottom: 0.4em;
-            color: var(--color-primary-dark);
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--spacing-md);
+            color: #fff;
         }
 
         #hero p {
-            font-size: 1.4em;
-            color: var(--color-text-light);
-            margin-bottom: 2em;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: var(--font-size-md);
+            margin-bottom: var(--spacing-xl);
+            color: rgba(255, 255, 255, 0.9);
         }
 
-        .hero-buttons {
+        #hero .cta-buttons {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: var(--spacing-md);
             flex-wrap: wrap;
         }
 
-        #features {
-            background-color: var(--color-background-secondary);
-            text-align: center;
-        }
-
-        #features h2 {
-            margin-bottom: 1.5em;
-            color: var(--color-primary-dark);
-        }
-
-        .features-grid {
+        /* Features Section */
+        #features .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            gap: var(--spacing-xl);
+            padding-top: var(--spacing-lg);
         }
 
-        .feature-item {
-            background-color: #fff;
-            padding: 30px;
+        .feature-card {
+            background-color: var(--color-background-alt);
+            padding: var(--spacing-xl);
             border-radius: var(--border-radius-md);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-            border-top: 4px solid var(--color-primary);
+            box-shadow: var(--box-shadow-sm);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .feature-item:hover {
+        .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--box-shadow-md);
         }
 
-        .feature-item .icon {
-            font-size: 3em;
+        .feature-card .icon-container {
+            width: 60px;
+            height: 60px;
+            background-color: var(--color-primary-light);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto var(--spacing-md) auto;
+        }
+
+        .feature-card .icon-container svg {
             color: var(--color-primary);
-            margin-bottom: 20px;
-            display: inline-block;
+            font-size: var(--font-size-lg);
         }
 
-        .feature-item h3 {
-            font-size: 1.5em;
-            margin-bottom: 15px;
+        .feature-card h3 {
+            margin-bottom: var(--spacing-xs);
             color: var(--color-text);
         }
 
-        .feature-item p {
-            font-size: 1em;
+        .feature-card p {
+            font-size: var(--font-size-sm);
             color: var(--color-text-light);
             margin-bottom: 0;
         }
-        
-        #about {
-            background-color: var(--color-background);
+
+        /* Interactive Tools Section */
+        #interactive-tools .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--spacing-xl);
+            padding-top: var(--spacing-lg);
         }
 
-        #about .container {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .about-content {
-            flex: 2;
-            min-width: 300px;
-        }
-
-        .about-content h2 {
-            color: var(--color-primary-dark);
-        }
-
-        .about-image {
-            flex: 1;
-            min-width: 250px;
-            background-color: var(--color-primary-light);
-            min-height: 250px;
+        .calculator-card {
+            background-color: var(--color-background-alt);
+            padding: var(--spacing-xl);
             border-radius: var(--border-radius-md);
+            box-shadow: var(--box-shadow-sm);
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2em;
+            flex-direction: column;
+        }
+
+        .calculator-card h3 {
             color: var(--color-primary-dark);
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
-        
-        #contact {
-            background-color: var(--color-background-secondary);
-            text-align: center;
+            margin-bottom: var(--spacing-lg);
         }
 
-        #contact h2 {
-            margin-bottom: 1.5em;
-            color: var(--color-primary-dark);
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 40px;
-            border-radius: var(--border-radius-md);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            border-top: 4px solid var(--color-primary);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--color-text-light);
-            font-size: 1em;
-        }
-
-        .form-group input,
-        .form-group textarea {
+        .calculator-card input,
+        .calculator-card select,
+        .calculator-card button {
             width: 100%;
-            padding: 12px 15px;
+            padding: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
             border: 1px solid var(--color-border);
             border-radius: var(--border-radius-sm);
-            font-family: var(--font-primary);
-            font-size: 1em;
-            color: var(--color-text);
-            transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-base);
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
+        .calculator-card .display {
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            padding: var(--spacing-sm);
+            text-align: right;
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-sm);
+            border-radius: var(--border-radius-sm);
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .calculator-card .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-xs);
+        }
+
+        .calculator-card .buttons-grid button {
+            background-color: #eee;
+            color: var(--color-text);
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            margin-bottom: 0;
+            font-size: var(--font-size-md);
+            font-weight: 500;
+        }
+
+        .calculator-card .buttons-grid button:hover {
+            background-color: #ddd;
+        }
+
+        .calculator-card .buttons-grid button.operator {
+            background-color: var(--color-primary-light);
+            color: var(--color-primary-dark);
+        }
+
+        .calculator-card .buttons-grid button.operator:hover {
+            background-color: var(--color-primary);
+            color: #fff;
+        }
+
+        .calculator-card .buttons-grid button.equals {
+            background-color: var(--color-primary);
+            color: #fff;
+            grid-column: span 2;
+        }
+
+        .calculator-card .buttons-grid button.equals:hover {
+            background-color: var(--color-primary-dark);
+        }
+
+        .calculator-card .buttons-grid button.clear {
+            background-color: var(--color-error);
+            color: #fff;
+        }
+
+        .calculator-card .buttons-grid button.clear:hover {
+            background-color: #c23737;
+        }
+
+        .income-result {
+            margin-top: var(--spacing-md);
+            padding: var(--spacing-md);
+            background-color: var(--color-primary-light);
+            border-radius: var(--border-radius-sm);
+            font-weight: 600;
+            color: var(--color-primary-dark);
+            text-align: center;
+            display: none; /* Hidden by default */
+        }
+
+        /* About Section */
+        #about .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+            padding-top: var(--spacing-lg);
+        }
+
+        #about .about-text p {
+            color: var(--color-text-light);
+        }
+
+        #about .about-image {
+            background-color: #f0f0f0;
+            min-height: 300px;
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            box-shadow: var(--box-shadow-sm);
+        }
+
+        #about .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Contact Section */
+        #contact .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--color-background-alt);
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--box-shadow-sm);
+        }
+
+        #contact .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        #contact label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        #contact input[type="text"],
+        #contact input[type="email"],
+        #contact textarea {
+            width: 100%;
+            padding: var(--spacing-sm);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-sm);
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-base);
+            transition: border-color 0.3s ease;
+        }
+
+        #contact input[type="text"]:focus,
+        #contact input[type="email"]:focus,
+        #contact textarea:focus {
             outline: none;
             border-color: var(--color-primary);
-            box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.2);
+            box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.2);
         }
 
-        .form-group textarea {
-            resize: vertical;
+        #contact textarea {
             min-height: 120px;
+            resize: vertical;
         }
 
-        .form-group input.error,
-        .form-group textarea.error {
-            border-color: var(--color-error);
-        }
-
-        .form-group .error-message {
-            color: var(--color-error);
-            font-size: 0.85em;
-            margin-top: 5px;
-            display: none;
-        }
-
-        .form-group input.error + .error-message,
-        .form-group textarea.error + .error-message {
-            display: block;
+        #contact .btn-submit {
+            width: 100%;
+            padding: var(--spacing-md);
+            font-size: var(--font-size-md);
+            margin-top: var(--spacing-sm);
         }
 
         /* Footer */
         .footer {
             background-color: var(--color-text);
-            color: #fff;
-            padding: 40px 0;
-            text-align: center;
-            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.8);
+            padding: var(--spacing-xl) 0;
+            font-size: var(--font-size-sm);
         }
 
-        .footer .container {
+        .footer-content {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .footer-links {
             list-style: none;
             display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
+            gap: var(--spacing-lg);
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s ease;
         }
 
         .footer-links a:hover {
-            color: #fff;
+            color: var(--color-primary);
+            text-decoration: none;
         }
 
-        .footer-text {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            :root {
-                --padding-section: 60px;
-            }
-
-            h1 { font-size: 2.8em; }
-            h2 { font-size: 2em; }
-            h3 { font-size: 1.6em; }
-            #hero h1 { font-size: 3em; }
-            #hero p { font-size: 1.2em; }
-        }
-
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .navbar .container {
-                flex-wrap: wrap;
+            h1 { font-size: var(--font-size-xl); }
+            h2 { font-size: var(--font-size-lg); }
+
+            .container {
+                padding: 0 var(--spacing-sm);
             }
 
             .nav-links {
-                flex-direction: column;
-                width: 100%;
                 display: none;
-                margin-top: 20px;
-                background-color: var(--color-background-secondary);
-                box-shadow: 0 5px 10px rgba(0,0,0,0.05);
-                border-radius: var(--border-radius-md);
-                padding: 10px 0;
+                flex-direction: column;
+                position: absolute;
+                top: 60px; /* Height of the nav-container */
+                left: 0;
+                width: 100%;
+                background-color: var(--color-background-alt);
+                box-shadow: var(--box-shadow-md);
+                padding: var(--spacing-md) 0;
             }
 
             .nav-links.active {
@@ -462,101 +551,95 @@
             }
 
             .nav-links li {
-                margin: 0;
+                margin: var(--spacing-xs) 0;
                 text-align: center;
-                border-bottom: 1px solid var(--color-border);
-            }
-
-            .nav-links li:last-child {
-                border-bottom: none;
             }
 
             .nav-links a {
                 display: block;
-                padding: 15px 20px;
+                padding: var(--spacing-sm) var(--spacing-md);
                 color: var(--color-text);
             }
 
-            .nav-links a::after {
-                height: 0; /* Hide bottom line for mobile */
-            }
-
             .nav-links a:hover {
-                background-color: var(--color-background);
+                background-color: var(--color-primary-light);
+                color: var(--color-primary-dark);
             }
 
             .menu-toggle {
                 display: flex;
             }
-            
+
+            /* Hero */
             #hero {
-                padding-top: calc(var(--padding-section) + 120px); /* More space for expanded nav */
+                min-height: 70vh;
             }
 
             #hero h1 {
-                font-size: 2.5em;
+                font-size: var(--font-size-lg);
             }
 
             #hero p {
-                font-size: 1.1em;
+                font-size: var(--font-size-base);
             }
 
-            .hero-buttons {
+            .cta-buttons {
                 flex-direction: column;
-                gap: 15px;
             }
 
             .btn {
-                width: 100%;
-                max-width: 300px;
-                margin: 0 auto;
+                width: 80%;
+                margin: 0 auto var(--spacing-sm) auto;
             }
 
-            .features-grid {
+            /* Features */
+            #features .features-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .about-content, .about-image {
-                flex: 1 1 100%;
-            }
-            .about-image {
-                order: -1; /* Image above text on mobile */
-                height: 200px;
-            }
-            .contact-form {
-                padding: 30px 20px;
-            }
-        }
 
-        @media (max-width: 480px) {
-            h1 { font-size: 2.2em; }
-            #hero h1 { font-size: 2em; }
-            #hero p { font-size: 1em; }
-            .logo { font-size: 1.5em; }
+            /* Interactive Tools */
+            #interactive-tools .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* About */
+            #about .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            #about .about-image {
+                order: -1; /* Image first on mobile */
+                margin-bottom: var(--spacing-lg);
+            }
+
+            /* Footer */
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--spacing-md);
+            }
+
             .footer-links {
                 flex-direction: column;
-                gap: 10px;
+                gap: var(--spacing-xs);
             }
         }
-        /* Icon styles for simplicity. In a real project, use SVG or a dedicated icon library */
-        .icon.calculator::before { content: '🧮'; } /* Unicode for Abacus/Calculator */
-        .icon.eu::before { content: '🇪🇺'; } /* Unicode for EU Flag */
-        .icon.easy::before { content: '✨'; } /* Unicode for Sparkles */
-        .icon.responsive::before { content: '📱'; } /* Unicode for Mobile Phone */
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
+    <nav class="header-nav">
+        <div class="container nav-container">
             <a href="#hero" class="logo">Calculator</a>
-            <div class="menu-toggle" id="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
             <ul class="nav-links">
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#features">Features</a></li>
+                <li><a href="#interactive-tools">Tools</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -564,198 +647,371 @@
     </nav>
 
     <section id="hero">
-        <div class="container">
-            <h1>Simplify Your Numbers with Our Smart Calculators</h1>
-            <p>From daily math to crucial financial planning across the EU, our intuitive tools make complex calculations effortless and precise, empowering you with instant answers.</p>
-            <div class="hero-buttons">
-                <a href="#features" class="btn btn-primary">Start Calculating Today</a>
-                <a href="#contact" class="btn btn-secondary">Get Personalized Support</a>
+        <div class="container hero-content">
+            <h1>Unlock Clarity: Your Essential Calculator & EU Income Tool</h1>
+            <p>Simplify complex calculations with our versatile online tools. From everyday math to precise EU income estimations, we've got you covered with accuracy and ease.</p>
+            <div class="cta-buttons">
+                <a href="#interactive-tools" class="btn btn-primary">Start Calculating Now</a>
+                <a href="#features" class="btn btn-secondary">Explore Our Tools</a>
             </div>
         </div>
     </section>
 
     <section id="features">
-        <div class="container">
-            <h2>Key Features Designed for You</h2>
+        <div class="container text-center">
+            <h2>Powerful Tools at Your Fingertips</h2>
+            <p>Discover a suite of calculators designed for efficiency and accuracy in every aspect of your life.</p>
             <div class="features-grid">
-                <div class="feature-item">
-                    <span class="icon calculator"></span>
-                    <h3>Instant Basic Calculations</h3>
-                    <p>Perform quick additions, subtractions, multiplications, and divisions with our user-friendly interactive calculator tool. Perfect for everyday needs.</p>
+                <div class="feature-card">
+                    <div class="icon-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><rect x="9" y="9" width="6" height="6"></rect><path d="M12 2L12 7"></path><path d="M12 17L12 22"></path><path d="M2 12L7 12"></path><path d="M17 12L22 12"></path></svg>
+                    </div>
+                    <h3>Basic & Scientific Calculator</h3>
+                    <p>Perform quick arithmetic operations, complex equations, and scientific functions effortlessly.</p>
                 </div>
-                <div class="feature-item">
-                    <span class="icon eu"></span>
-                    <h3>EU Income Estimator</h3>
-                    <p>Navigate complex income tax scenarios for various EU countries. Our specialized tool helps residents estimate their net income with ease and accuracy.</p>
+                <div class="feature-card">
+                    <div class="icon-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M12 1v22"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    </div>
+                    <h3>EU Income Calculator</h3>
+                    <p>Accurately estimate net income, taxes, and contributions across various EU countries.</p>
                 </div>
-                <div class="feature-item">
-                    <span class="icon easy"></span>
-                    <h3>User-Friendly Interface</h3>
-                    <p>Designed for simplicity and clarity, our calculators ensure a smooth and intuitive experience for everyone, regardless of their tech proficiency.</p>
+                <div class="feature-card">
+                    <div class="icon-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect><path d="M12 10v4"></path><path d="M14 12H10"></path></svg>
+                    </div>
+                    <h3>Unit Converter</h3>
+                    <p>Convert units of measurement instantly and accurately for length, weight, volume, and more.</p>
                 </div>
-                <div class="feature-item">
-                    <span class="icon responsive"></span>
-                    <h3>Responsive & Accessible</h3>
-                    <p>Access our tools seamlessly from any device – desktop, tablet, or mobile. Optimized for performance and readability across all screen sizes.</p>
+                <div class="feature-card">
+                    <div class="icon-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                    </div>
+                    <h3>Financial Planning Tools</h3>
+                    <p>Budgeting, loans, mortgages, and investment calculators for smarter financial decisions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="interactive-tools">
+        <div class="container text-center">
+            <h2>Your Interactive Calculators</h2>
+            <p>Dive into our most popular tools designed for your daily and professional needs.</p>
+            <div class="tools-grid">
+                <div class="calculator-card">
+                    <h3>Basic Calculator</h3>
+                    <div class="display" id="calcDisplay">0</div>
+                    <div class="buttons-grid">
+                        <button class="clear" data-action="clear">C</button>
+                        <button class="operator" data-action="negate">+/-</button>
+                        <button class="operator" data-action="percent">%</button>
+                        <button class="operator" data-action="divide">/</button>
+                        <button data-value="7">7</button>
+                        <button data-value="8">8</button>
+                        <button data-value="9">9</button>
+                        <button class="operator" data-action="multiply">*</button>
+                        <button data-value="4">4</button>
+                        <button data-value="5">5</button>
+                        <button data-value="6">6</button>
+                        <button class="operator" data-action="subtract">-</button>
+                        <button data-value="1">1</button>
+                        <button data-value="2">2</button>
+                        <button data-value="3">3</button>
+                        <button class="operator" data-action="add">+</button>
+                        <button data-value="0">0</button>
+                        <button data-value=".">.</button>
+                        <button class="equals" data-action="equals">=</button>
+                    </div>
+                </div>
+
+                <div class="calculator-card">
+                    <h3>EU Income Calculator</h3>
+                    <p>Estimate your net income after taxes and social contributions in selected EU countries.</p>
+                    <div class="form-group">
+                        <label for="grossIncome">Gross Annual Income (€)</label>
+                        <input type="number" id="grossIncome" value="50000" min="0" step="1000">
+                    </div>
+                    <div class="form-group">
+                        <label for="euCountry">Select EU Country</label>
+                        <select id="euCountry">
+                            <option value="germany">Germany</option>
+                            <option value="france">France</option>
+                            <option value="spain">Spain</option>
+                            <option value="italy">Italy</option>
+                            <option value="netherlands">Netherlands</option>
+                            <option value="ireland">Ireland</option>
+                            <option value="poland">Poland</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" id="calculateEuIncome">Calculate Net Income</button>
+                    <div class="income-result" id="euIncomeResult">
+                        Your estimated net income: <strong>€35,000</strong>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="about">
-        <div class="container">
+        <div class="container text-center">
+            <h2>Our Story: Simplifying Numbers, Empowering You</h2>
             <div class="about-content">
-                <h2>About Calculator: Your Trusted Partner in Numbers</h2>
-                <p>At Calculator, we believe that understanding your finances and performing everyday calculations shouldn't be a chore. Our journey began with a simple idea: to create a reliable and accessible platform where anyone, anywhere, can get precise answers to their numerical questions. We're dedicated to stripping away complexity, offering tools that are both powerful and incredibly easy to use. Whether you're balancing your checkbook or delving into cross-border financial planning within the European Union, our aim is to be your go-to resource.</p>
-                <p>We are a passionate team committed to continuous improvement, ensuring our calculators are always up-to-date with the latest regulations and best practices, especially concerning the diverse tax landscapes of EU countries. Our mission is to empower you with clarity and confidence, transforming daunting numbers into manageable insights. With Calculator, you gain more than just results; you gain peace of mind.</p>
-            </div>
-            <div class="about-image">
-                <p>Illustration Placeholder: <br> People interacting with calculators</p>
+                <div class="about-text">
+                    <p>At Calculator, we believe that complex numbers shouldn't be a barrier to clarity. Our journey began with a simple vision: to provide accessible, reliable, and user-friendly calculation tools for everyone. Whether you're a student tackling homework, a professional managing finances, or an expat navigating EU income taxes, we strive to make your numerical tasks straightforward and stress-free.</p>
+                    <p>Built with precision and designed for ease, our platform constantly evolves. We are committed to empowering our users with the tools they need to make informed decisions, understand their finances better, and save valuable time. Join our growing community and experience the simplicity of smart calculations that truly make a difference in your daily life and financial planning.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1579547621113-e4d29cf944de?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Abstract math calculations">
+                </div>
             </div>
         </div>
     </section>
-    
+
     <section id="contact">
-        <div class="container">
-            <h2>Get in Touch</h2>
-            <p>Have questions about our calculators or need assistance with a specific feature? We're here to help!</p>
-            <form class="contact-form" id="contactForm">
+        <div class="container text-center">
+            <h2>Get In Touch</h2>
+            <p>Have questions, feedback, or need assistance? Reach out to us!</p>
+            <form id="contactForm" class="contact-form">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required placeholder="Your Name">
-                    <div class="error-message" id="name-error">Name is required.</div>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" required placeholder="your.email@example.com">
-                    <div class="error-message" id="email-error">Please enter a valid email address.</div>
                 </div>
                 <div class="form-group">
                     <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" required placeholder="How can we help you?"></textarea>
-                    <div class="error-message" id="message-error">Message cannot be empty.</div>
+                    <textarea id="message" name="message" required placeholder="How can we help you?"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Send Message</button>
+                <button type="submit" class="btn btn-primary btn-submit">Send Message</button>
             </form>
         </div>
     </section>
 
     <footer class="footer">
-        <div class="container">
+        <div class="container footer-content">
+            <p>&copy; 2025 Calculator. All rights reserved.</p>
             <ul class="footer-links">
                 <li><a href="#hero">Home</a></li>
-                <li><a href="#features">Features</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms of Service</a></li>
             </ul>
-            <p class="footer-text">© 2025 Calculator. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Mobile Menu Toggle
-            const mobileMenu = document.getElementById('mobile-menu');
+        // Smooth Scroll & Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
             const navLinks = document.querySelector('.nav-links');
+            const menuToggle = document.querySelector('.menu-toggle');
 
-            mobileMenu.addEventListener('click', () => {
+            menuToggle.addEventListener('click', function() {
                 navLinks.classList.toggle('active');
-                // Optional: add a class to mobileMenu for animating the icon if needed
             });
 
-            // Smooth Scroll for Navigation Links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
+            document.querySelectorAll('.nav-links a, .logo').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
                     e.preventDefault();
-
-                    // Close mobile menu if open
                     if (navLinks.classList.contains('active')) {
                         navLinks.classList.remove('active');
-                        // mobileMenu.classList.remove('active'); // Remove if not animating hamburger
                     }
-
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
                     if (targetElement) {
-                        const navbarHeight = document.querySelector('.navbar').offsetHeight;
-                        const offsetTop = targetElement.getBoundingClientRect().top + window.scrollY - navbarHeight;
-                        
                         window.scrollTo({
-                            top: offsetTop,
+                            top: targetElement.offsetTop - (document.querySelector('.header-nav').offsetHeight),
                             behavior: 'smooth'
                         });
                     }
                 });
             });
 
-            // Contact Form Validation and Submission
+            // Contact Form Handler
             const contactForm = document.getElementById('contactForm');
-            
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                let isValid = true;
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('message').value;
 
-                const nameInput = document.getElementById('name');
-                const emailInput = document.getElementById('email');
-                const messageInput = document.getElementById('message');
+                    if (name && email && message) {
+                        alert('Thank you for your message, ' + name + '! We will get back to you shortly.');
+                        contactForm.reset();
+                    } else {
+                        alert('Please fill in all fields.');
+                    }
+                });
+            }
 
-                const nameError = document.getElementById('name-error');
-                const emailError = document.getElementById('email-error');
-                const messageError = document.getElementById('message-error');
+            // Basic Calculator Logic
+            const calcDisplay = document.getElementById('calcDisplay');
+            const calculatorButtons = document.querySelector('.calculator-card .buttons-grid');
+            let currentInput = '0';
+            let firstOperand = null;
+            let operator = null;
+            let waitingForSecondOperand = false;
 
-                // Helper to set error state
-                const setError = (input, errorElement, message) => {
-                    input.classList.add('error');
-                    errorElement.textContent = message;
-                    errorElement.style.display = 'block';
-                };
+            function updateDisplay() {
+                calcDisplay.textContent = currentInput;
+            }
 
-                // Helper to clear error state
-                const clearError = (input, errorElement) => {
-                    input.classList.remove('error');
-                    errorElement.style.display = 'none';
-                };
-
-                // Validate Name
-                if (nameInput.value.trim() === '') {
-                    setError(nameInput, nameError, 'Name is required.');
-                    isValid = false;
+            function inputDigit(digit) {
+                if (waitingForSecondOperand === true) {
+                    currentInput = digit;
+                    waitingForSecondOperand = false;
                 } else {
-                    clearError(nameInput, nameError);
+                    currentInput = currentInput === '0' ? digit : currentInput + digit;
+                }
+                updateDisplay();
+            }
+
+            function inputDecimal(dot) {
+                if (waitingForSecondOperand === true) return;
+                if (!currentInput.includes(dot)) {
+                    currentInput += dot;
+                }
+                updateDisplay();
+            }
+
+            function handleOperator(nextOperator) {
+                const inputValue = parseFloat(currentInput);
+
+                if (operator && waitingForSecondOperand) {
+                    operator = nextOperator;
+                    return;
                 }
 
-                // Validate Email
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(emailInput.value.trim())) {
-                    setError(emailInput, emailError, 'Please enter a valid email address.');
-                    isValid = false;
-                } else {
-                    clearError(emailInput, emailError);
+                if (firstOperand === null) {
+                    firstOperand = inputValue;
+                } else if (operator) {
+                    const result = performCalculation[operator](firstOperand, inputValue);
+                    currentInput = String(result);
+                    firstOperand = result;
                 }
 
-                // Validate Message
-                if (messageInput.value.trim() === '') {
-                    setError(messageInput, messageError, 'Message cannot be empty.');
-                    isValid = false;
-                } else {
-                    clearError(messageInput, messageError);
+                waitingForSecondOperand = true;
+                operator = nextOperator;
+                updateDisplay();
+            }
+
+            const performCalculation = {
+                '/': (firstOperand, secondOperand) => firstOperand / secondOperand,
+                '*': (firstOperand, secondOperand) => firstOperand * secondOperand,
+                '+': (firstOperand, secondOperand) => firstOperand + secondOperand,
+                '-': (firstOperand, secondOperand) => firstOperand - secondOperand,
+                '=': (firstOperand, secondOperand) => secondOperand
+            };
+
+            function resetCalculator() {
+                currentInput = '0';
+                firstOperand = null;
+                operator = null;
+                waitingForSecondOperand = false;
+                updateDisplay();
+            }
+
+            function negateNumber() {
+                currentInput = String(parseFloat(currentInput) * -1);
+                updateDisplay();
+            }
+
+            function calculatePercentage() {
+                currentInput = String(parseFloat(currentInput) / 100);
+                updateDisplay();
+            }
+
+            calculatorButtons.addEventListener('click', (event) => {
+                const { target } = event;
+                if (!target.matches('button')) {
+                    return;
                 }
 
-                if (isValid) {
-                    // In a real application, you would send this data to a server
-                    console.log('Form Submitted Successfully!');
-                    console.log('Name:', nameInput.value);
-                    console.log('Email:', emailInput.value);
-                    console.log('Message:', messageInput.value);
+                if (target.dataset.action === 'clear') {
+                    resetCalculator();
+                    return;
+                }
 
-                    alert('Thank you for your message! We will get back to you soon.');
-                    contactForm.reset();
-                    // Optional: Disable button or show success message for a few seconds
+                if (target.dataset.action === 'negate') {
+                    negateNumber();
+                    return;
+                }
+
+                if (target.dataset.action === 'percent') {
+                    calculatePercentage();
+                    return;
+                }
+
+                if (target.classList.contains('operator')) {
+                    handleOperator(target.dataset.action);
+                    return;
+                }
+
+                if (target.dataset.value === '.') {
+                    inputDecimal(target.dataset.value);
+                    return;
+                }
+
+                if (target.dataset.value) {
+                    inputDigit(target.dataset.value);
+                    return;
                 }
             });
+            updateDisplay(); // Initialize display
+
+            // EU Income Calculator Logic
+            const calculateEuIncomeBtn = document.getElementById('calculateEuIncome');
+            const euIncomeResult = document.getElementById('euIncomeResult');
+            const grossIncomeInput = document.getElementById('grossIncome');
+            const euCountrySelect = document.getElementById('euCountry');
+
+            if (calculateEuIncomeBtn) {
+                calculateEuIncomeBtn.addEventListener('click', function() {
+                    const grossIncome = parseFloat(grossIncomeInput.value);
+                    const country = euCountrySelect.value;
+                    let netIncome = 0;
+                    let taxRate = 0;
+
+                    if (isNaN(grossIncome) || grossIncome < 0) {
+                        alert('Please enter a valid gross annual income.');
+                        return;
+                    }
+
+                    // Simplified dummy calculation for demonstration
+                    switch (country) {
+                        case 'germany':
+                            taxRate = 0.35; // Example: ~35% effective tax rate
+                            break;
+                        case 'france':
+                            taxRate = 0.30; // Example: ~30%
+                            break;
+                        case 'spain':
+                            taxRate = 0.28; // Example: ~28%
+                            break;
+                        case 'italy':
+                            taxRate = 0.27; // Example: ~27%
+                            break;
+                        case 'netherlands':
+                            taxRate = 0.38; // Example: ~38%
+                            break;
+                        case 'ireland':
+                            taxRate = 0.25; // Example: ~25%
+                            break;
+                        case 'poland':
+                            taxRate = 0.20; // Example: ~20%
+                            break;
+                        default:
+                            taxRate = 0.30;
+                    }
+
+                    netIncome = grossIncome * (1 - taxRate);
+                    euIncomeResult.innerHTML = `Your estimated net income in ${country.charAt(0).toUpperCase() + country.slice(1)}: <strong>€${netIncome.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</strong>`;
+                    euIncomeResult.style.display = 'block';
+                });
+            }
         });
     </script>
 </body>
