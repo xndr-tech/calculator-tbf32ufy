@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "siteId": "tbf32ufy",
+  "name": "Calculator",
+  "description": "A simple calculator website, with an interactive tool, and also an income calculator for residents of EU countries.",
+  "siteType": "one-page",
+  "colorScheme": "coral",
+  "font": "Albert Sans",
+  "tags": [
+    "calculator",
+    "tool",
+    "maths"
+  ],
+  "tools": [],
+  "model": "gemini-2.5-flash",
+  "createdAt": 1767211392251,
+  "updatedAt": 1767211392251
+}
