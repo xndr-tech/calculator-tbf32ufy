@@ -3,36 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator - Simplify Your Numbers</title>
+    <title>Calculator - Your Financial Clarity Tool</title>
     <meta name="description" content="A simple calculator website, with an interactive tool, and also an income calculator for residents of EU countries.">
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --font-family-primary: 'Urbanist', sans-serif;
-            --color-primary: #d97706; /* Amber-700 */
-            --color-primary-dark: #b45309; /* Amber-800 */
-            --color-primary-light: #fcd34d; /* Amber-300 */
-            --color-text-dark: #1f2937; /* Gray-800 */
-            --color-text-light: #374151; /* Gray-700 */
-            --color-background-light: #f9fafb; /* Gray-50 */
-            --color-background-mid: #f3f4f6; /* Gray-100 */
-            --color-border: #e5e7eb; /* Gray-200 */
-            --color-white: #ffffff;
-            --color-black: #000000;
+            --color-primary: #d97706; /* Amber 600 */
+            --color-primary-light: #fcd34d; /* Amber 300 */
+            --color-primary-dark: #b45309; /* Amber 700 */
+            --color-text: #333;
+            --color-text-light: #fdfdfd;
+            --color-bg: #f9f9f9;
+            --color-light-bg: #ffffff;
+            --color-dark-bg: #2d2d2d;
+            --font-family-urbanist: 'Urbanist', sans-serif;
             --spacing-xs: 0.5rem;
             --spacing-sm: 1rem;
             --spacing-md: 1.5rem;
             --spacing-lg: 2rem;
-            --spacing-xl: 3rem;
-            --spacing-section-padding: 6rem 0; /* 96px top/bottom */
-            --border-radius-sm: 0.25rem;
-            --border-radius-md: 0.5rem;
-            --box-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --box-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --section-padding-y: 80px;
+            --max-width: 1200px;
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
             --transition-speed: 0.3s;
         }
 
-        *, *::before, *::after {
+        /* Base Styles */
+        * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -43,97 +42,86 @@
         }
 
         body {
-            font-family: var(--font-family-primary);
+            font-family: var(--font-family-urbanist);
+            color: var(--color-text);
             line-height: 1.6;
-            color: var(--color-text-light);
-            background-color: var(--color-background-light);
+            background-color: var(--color-bg);
             -webkit-font-smoothing: antialiased;
-            min-height: 100vh;
+            -moz-osx-font-smoothing: grayscale;
         }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text);
+        }
+
+        h1 { font-size: 3.2rem; }
+        h2 { font-size: 2.5rem; margin-bottom: var(--spacing-lg); }
+        h3 { font-size: 1.8rem; }
+        p { margin-bottom: var(--spacing-sm); }
 
         a {
             color: var(--color-primary);
             text-decoration: none;
-            transition: color var(--transition-speed) ease;
+            transition: color var(--transition-speed);
         }
 
         a:hover {
             color: var(--color-primary-dark);
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            color: var(--color-text-dark);
+        button {
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: none;
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            font-size: var(--spacing-sm);
             font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: var(--spacing-sm);
+            transition: background-color var(--transition-speed), transform var(--transition-speed);
         }
 
-        h1 { font-size: 3rem; }
-        h2 { font-size: 2.5rem; }
-        h3 { font-size: 1.75rem; }
-        h4 { font-size: 1.25rem; }
-
-        p {
-            margin-bottom: var(--spacing-sm);
+        button:hover {
+            background-color: var(--color-primary-dark);
+            transform: translateY(-2px);
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--spacing-md);
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+            border: 1px solid #ccc;
+            border-radius: var(--border-radius-sm);
+            font-family: var(--font-family-urbanist);
+            font-size: var(--spacing-sm);
+            transition: border-color var(--transition-speed);
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--color-primary);
         }
 
         section {
-            padding: var(--spacing-section-padding);
-            position: relative;
-            z-index: 1;
+            padding: var(--section-padding-y) 0;
+            text-align: center;
         }
 
-        /* Utility Classes */
-        .text-center { text-align: center; }
-        .grid { display: grid; }
-        .flex { display: flex; }
-        .flex-col { flex-direction: column; }
-        .items-center { align-items: center; }
-        .justify-center { justify-content: center; }
-        .gap-md { gap: var(--spacing-md); }
-        .gap-lg { gap: var(--spacing-lg); }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: var(--spacing-sm) var(--spacing-lg);
-            border-radius: var(--border-radius-md);
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all var(--transition-speed) ease;
-            border: 2px solid transparent;
-            font-size: 1.1rem;
-        }
-
-        .btn-primary {
-            background-color: var(--color-primary);
-            color: var(--color-white);
-            border-color: var(--color-primary);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--color-primary-dark);
-            border-color: var(--color-primary-dark);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--color-primary);
-            border-color: var(--color-primary);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--color-primary-light);
-            color: var(--color-primary-dark);
+        .text-center {
+            text-align: center;
         }
 
         /* Navigation */
@@ -142,37 +130,39 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: var(--color-white);
-            box-shadow: var(--box-shadow-sm);
-            padding: var(--spacing-sm) 0;
+            background-color: var(--color-light-bg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            padding: var(--spacing-sm) 0;
         }
 
-        .header-nav .container {
+        .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
         }
 
-        .nav-logo {
-            font-size: 1.8rem;
+        .logo {
+            font-size: var(--spacing-lg);
             font-weight: 700;
-            color: var(--color-primary-dark);
-            text-decoration: none;
+            color: var(--color-primary);
         }
 
         .nav-links {
             list-style: none;
             display: flex;
-            gap: var(--spacing-lg);
+        }
+
+        .nav-links li {
+            margin-left: var(--spacing-lg);
         }
 
         .nav-links a {
-            font-weight: 500;
-            color: var(--color-text-dark);
+            color: var(--color-text);
+            font-weight: 600;
             padding: var(--spacing-xs) 0;
             position: relative;
         }
@@ -185,478 +175,450 @@
             width: 0;
             height: 2px;
             background-color: var(--color-primary);
-            transition: width var(--transition-speed) ease;
+            transition: width var(--transition-speed);
         }
 
-        .nav-links a:hover::after {
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
             width: 100%;
         }
 
         .menu-toggle {
             display: none;
+            flex-direction: column;
             cursor: pointer;
-            font-size: 1.8rem;
-            color: var(--color-text-dark);
+            padding: var(--spacing-xs);
             border: none;
-            background: none;
+            background: transparent;
+            width: 30px;
+            height: 24px;
+            justify-content: space-between;
+            align-items: center;
         }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--color-text);
+            border-radius: 2px;
+            transition: all var(--transition-speed);
+        }
+
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
         /* Hero Section */
         #hero {
-            background: linear-gradient(135deg, var(--color-background-mid) 0%, var(--color-background-light) 100%);
-            padding-top: calc(var(--spacing-section-padding) + 4.5rem); /* Adjust for fixed nav */
-            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://source.unsplash.com/random/1600x900/?calculator,money') no-repeat center center/cover;
+            color: var(--color-text-light);
+            padding: 180px 0;
             display: flex;
             align-items: center;
-            justify-content: center;
-            min-height: 80vh;
+            min-height: 100vh;
+            text-align: center;
+            position: relative;
+            margin-top: -65px; /* Adjust for fixed nav */
+        }
+
+        #hero .container {
+            max-width: 800px;
         }
 
         #hero h1 {
+            color: var(--color-text-light);
             font-size: 4rem;
-            margin-bottom: var(--spacing-md);
-            color: var(--color-primary-dark);
-            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
         }
 
         #hero p {
-            font-size: 1.4rem;
-            max-width: 800px;
-            margin: 0 auto var(--spacing-xl);
-            color: var(--color-text-light);
+            font-size: 1.3rem;
+            margin-bottom: var(--spacing-lg);
+            font-weight: 300;
+            opacity: 0.9;
         }
 
-        .hero-actions {
-            display: flex;
-            gap: var(--spacing-md);
-            justify-content: center;
+        #hero .cta-button {
+            padding: var(--spacing-md) var(--spacing-lg);
+            font-size: 1.2rem;
+            border-radius: var(--border-radius-md);
         }
 
         /* Features Section */
         #features {
-            background-color: var(--color-white);
-            text-align: center;
+            background-color: var(--color-light-bg);
         }
 
         #features h2 {
-            margin-bottom: var(--spacing-xl);
+            color: var(--color-text);
+            margin-bottom: var(--spacing-lg);
         }
 
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
         }
 
-        .feature-item {
-            background-color: var(--color-background-light);
+        .feature-card {
+            background-color: var(--color-light-bg);
             padding: var(--spacing-lg);
             border-radius: var(--border-radius-md);
-            box-shadow: var(--box-shadow-sm);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
             text-align: center;
-            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .feature-item:hover {
+        .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--box-shadow-md);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
         }
 
-        .feature-item .icon {
-            font-size: 3rem;
-            color: var(--color-primary);
-            margin-bottom: var(--spacing-md);
-            display: inline-block;
+        .feature-card .icon {
+            width: 60px;
+            height: 60px;
             background-color: var(--color-primary-light);
-            padding: var(--spacing-sm);
             border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+            font-size: 2rem;
+            color: var(--color-primary-dark);
         }
 
-        .feature-item h3 {
-            margin-bottom: var(--spacing-sm);
-            font-weight: 600;
-            color: var(--color-text-dark);
+        .feature-card h3 {
+            color: var(--color-primary-dark);
+            margin-bottom: var(--spacing-xs);
         }
 
-        .feature-item p {
+        .feature-card p {
             font-size: 0.95rem;
-            color: var(--color-text-light);
+            color: var(--color-text);
+            opacity: 0.8;
+            margin-bottom: 0;
         }
 
         /* About Section */
         #about {
-            background-color: var(--color-background-mid);
-            padding-top: calc(var(--spacing-section-padding) + 0rem);
-            padding-bottom: calc(var(--spacing-section-padding) + 0rem);
-        }
-
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-xl);
-            flex-wrap: wrap;
-        }
-
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .about-image {
-            flex: 1;
-            min-width: 300px;
-            background-color: var(--color-border);
-            border-radius: var(--border-radius-md);
-            overflow: hidden;
-            height: 400px; /* Placeholder height */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-text-light);
-            font-size: 1.2rem;
-            box-shadow: var(--box-shadow-sm);
-            background: url('https://via.placeholder.com/600x400/d97706/ffffff?text=Calculator+Image') no-repeat center center / cover;
-        }
-        
-        /* Calculators Section */
-        #calculators {
-            background-color: var(--color-white);
-            text-align: center;
-        }
-        #calculators h2 {
-            margin-bottom: var(--spacing-xl);
-        }
-
-        .calculators-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--spacing-lg);
-            justify-content: center;
-        }
-
-        .calculator-card {
-            background-color: var(--color-background-mid);
-            padding: var(--spacing-lg);
-            border-radius: var(--border-radius-md);
-            box-shadow: var(--box-shadow-sm);
-            flex: 1;
-            min-width: 300px;
-            max-width: 500px;
+            background-color: var(--color-bg);
             text-align: left;
         }
 
-        .calculator-card h3 {
+        #about .about-content {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+
+        #about .text-content {
+            flex: 1;
+        }
+
+        #about h2 {
             text-align: center;
-            margin-bottom: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            color: var(--color-text);
+        }
+        #about h2 + p {
+            text-align: left;
+        }
+
+        #about .image-placeholder {
+            flex: 1;
+            min-height: 300px;
+            background: url('https://source.unsplash.com/random/800x600/?office,team') no-repeat center center/cover;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Services (Calculators) Section */
+        #services {
+            background-color: var(--color-light-bg);
+        }
+
+        #services h2 {
+            color: var(--color-text);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        #services > p {
+            margin-bottom: var(--spacing-lg);
+            font-size: 1.1rem;
+            color: var(--color-text);
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .calculator-card {
+            background-color: var(--color-light-bg);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .calculator-card h3 {
             color: var(--color-primary-dark);
+            margin-bottom: var(--spacing-md);
         }
 
         /* Basic Calculator Styles */
-        .calc-display {
-            background-color: var(--color-text-dark);
-            color: var(--color-white);
-            font-size: 2.5rem;
-            padding: var(--spacing-sm);
-            border-radius: var(--border-radius-sm);
+        .basic-calculator {
+            max-width: 320px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .calculator-display {
+            background-color: var(--color-dark-bg);
+            color: var(--color-text-light);
+            padding: var(--spacing-md);
             text-align: right;
-            margin-bottom: var(--spacing-md);
-            min-height: 3.5rem;
+            font-size: 2.5rem;
+            min-height: 80px;
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: flex-end;
             word-break: break-all;
-            overflow: hidden;
         }
 
-        .calc-buttons {
+        .calculator-buttons {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: var(--spacing-xs);
+            gap: 1px;
+            background-color: #eee;
         }
 
-        .calc-buttons button {
-            background-color: var(--color-white);
-            border: 1px solid var(--color-border);
+        .calculator-buttons button {
+            background-color: #fff;
+            color: var(--color-text);
+            border: none;
             padding: var(--spacing-md);
-            font-size: 1.2rem;
-            font-weight: 500;
-            border-radius: var(--border-radius-sm);
+            font-size: 1.5rem;
             cursor: pointer;
-            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+            transition: background-color var(--transition-speed);
+            border-radius: 0;
+            box-shadow: none;
         }
 
-        .calc-buttons button:hover {
-            background-color: var(--color-background-light);
+        .calculator-buttons button:hover {
+            background-color: #f0f0f0;
+            transform: none;
         }
 
-        .calc-buttons button.operator,
-        .calc-buttons button.equals {
+        .calculator-buttons button.operator {
+            background-color: var(--color-primary-light);
+            color: var(--color-primary-dark);
+        }
+
+        .calculator-buttons button.operator:hover {
             background-color: var(--color-primary);
-            color: var(--color-white);
-            border-color: var(--color-primary);
+            color: var(--color-text-light);
         }
 
-        .calc-buttons button.operator:hover,
-        .calc-buttons button.equals:hover {
+        .calculator-buttons button.clear-btn {
+            background-color: #fca5a5; /* Reddish for clear */
+            color: #b91c1c;
+        }
+        .calculator-buttons button.clear-btn:hover {
+            background-color: #ef4444;
+            color: var(--color-text-light);
+        }
+
+        .calculator-buttons button.equal-btn {
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+        }
+        .calculator-buttons button.equal-btn:hover {
             background-color: var(--color-primary-dark);
-            border-color: var(--color-primary-dark);
         }
 
-        .calc-buttons button.clear {
-            background-color: #ef4444; /* Red */
-            color: var(--color-white);
-            border-color: #ef4444;
-        }
-        .calc-buttons button.clear:hover {
-            background-color: #dc2626; /* Darker Red */
-        }
-        
         /* EU Income Calculator Styles */
-        .eu-calc-form {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-md);
+        .income-calculator form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-sm);
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
         }
 
-        .eu-calc-form label {
-            font-weight: 500;
-            color: var(--color-text-dark);
+        .income-calculator label {
+            font-weight: 600;
             margin-bottom: var(--spacing-xs);
             display: block;
         }
 
-        .eu-calc-form input[type="number"],
-        .eu-calc-form select {
-            width: 100%;
-            padding: var(--spacing-sm);
-            border: 1px solid var(--color-border);
-            border-radius: var(--border-radius-sm);
-            font-size: 1rem;
-            color: var(--color-text-dark);
-            background-color: var(--color-white);
-            transition: border-color var(--transition-speed) ease;
-        }
-
-        .eu-calc-form input[type="number"]:focus,
-        .eu-calc-form select:focus {
-            outline: none;
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 3px rgba(var(--color-primary), 0.2);
-        }
-
-        .eu-calc-form button {
-            width: 100%;
-            padding: var(--spacing-sm);
-            background-color: var(--color-primary);
-            color: var(--color-white);
-            border: none;
-            border-radius: var(--border-radius-md);
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color var(--transition-speed) ease;
-        }
-
-        .eu-calc-form button:hover {
-            background-color: var(--color-primary-dark);
-        }
-
-        #eu-result {
+        .income-calculator .result {
             margin-top: var(--spacing-md);
             padding: var(--spacing-md);
             background-color: var(--color-primary-light);
-            border-radius: var(--border-radius-md);
-            font-size: 1.1rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 1.2rem;
             font-weight: 600;
-            color: var(--color-text-dark);
-            text-align: center;
-        }
-
-        #eu-result span {
             color: var(--color-primary-dark);
         }
+        .income-calculator .result span {
+            font-weight: 700;
+            color: var(--color-primary-dark);
+            margin-left: var(--spacing-xs);
+        }
+        .income-calculator button {
+            width: fit-content;
+            margin-top: var(--spacing-sm);
+            justify-self: center;
+        }
+
 
         /* Testimonials Section */
         #testimonials {
-            background-color: var(--color-background-mid);
-            text-align: center;
+            background-color: var(--color-bg);
         }
 
         #testimonials h2 {
-            margin-bottom: var(--spacing-xl);
+            color: var(--color-text);
         }
 
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
         }
 
         .testimonial-card {
-            background-color: var(--color-white);
+            background-color: var(--color-light-bg);
             padding: var(--spacing-lg);
             border-radius: var(--border-radius-md);
-            box-shadow: var(--box-shadow-sm);
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-sm);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            font-style: italic;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
         }
 
         .testimonial-card p {
-            font-style: italic;
             margin-bottom: var(--spacing-sm);
-            color: var(--color-text-light);
-            flex-grow: 1;
+            color: var(--color-text);
         }
 
-        .testimonial-author {
+        .testimonial-card .author {
             font-weight: 600;
             color: var(--color-primary-dark);
-            font-size: 1.1rem;
-        }
-
-        .testimonial-rating {
-            color: #fbbf24; /* Yellow for stars */
-            font-size: 1.2rem;
+            font-style: normal;
         }
 
         /* Contact Section */
         #contact {
-            background-color: var(--color-white);
-            text-align: center;
+            background-color: var(--color-light-bg);
         }
 
         #contact h2 {
-            margin-bottom: var(--spacing-xl);
+            color: var(--color-text);
         }
 
-        .contact-form {
+        #contact form {
             max-width: 600px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: var(--spacing-md);
-            background-color: var(--color-background-mid);
-            padding: var(--spacing-xl);
+            gap: var(--spacing-sm);
+            padding: var(--spacing-lg);
             border-radius: var(--border-radius-md);
-            box-shadow: var(--box-shadow-sm);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background-color: var(--color-bg);
             text-align: left;
         }
-
-        .form-group {
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: var(--spacing-xs);
-            font-weight: 500;
-            color: var(--color-text-dark);
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group textarea {
-            width: 100%;
-            padding: var(--spacing-sm);
-            border: 1px solid var(--color-border);
-            border-radius: var(--border-radius-sm);
-            font-family: var(--font-family-primary);
-            font-size: 1rem;
-            color: var(--color-text-dark);
-            background-color: var(--color-white);
-            transition: border-color var(--transition-speed) ease;
-        }
-
-        .form-group input[type="text"]:focus,
-        .form-group input[type="email"]:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 3px rgba(var(--color-primary), 0.2);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .contact-form button {
-            width: 100%;
-            padding: var(--spacing-md);
-            background-color: var(--color-primary);
-            color: var(--color-white);
-            border: none;
-            border-radius: var(--border-radius-md);
-            font-size: 1.1rem;
+        #contact form label {
             font-weight: 600;
-            cursor: pointer;
-            transition: background-color var(--transition-speed) ease;
         }
 
-        .contact-form button:hover {
-            background-color: var(--color-primary-dark);
+        #contact form button {
+            align-self: flex-start;
+            margin-top: var(--spacing-sm);
         }
 
         /* Footer */
-        footer {
-            background-color: var(--color-text-dark);
-            color: var(--color-border);
-            padding: var(--spacing-xl) 0;
-            text-align: center;
+        .footer {
+            background-color: var(--color-dark-bg);
+            color: var(--color-text-light);
+            padding: var(--spacing-lg) 0;
             font-size: 0.9rem;
         }
 
-        footer .container {
+        .footer .container {
             display: flex;
             flex-direction: column;
-            align-items: center;
             gap: var(--spacing-md);
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 0;
+            opacity: 0.8;
         }
 
         .footer-links {
             list-style: none;
             display: flex;
-            gap: var(--spacing-lg);
-            flex-wrap: wrap;
             justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-links li {
+            margin: 0 var(--spacing-sm);
         }
 
         .footer-links a {
-            color: var(--color-border);
-            font-weight: 500;
+            color: var(--color-text-light);
+            font-weight: 400;
+            opacity: 0.8;
+            transition: opacity var(--transition-speed);
         }
 
         .footer-links a:hover {
+            opacity: 1;
             color: var(--color-primary-light);
         }
 
-        /* Mobile Responsiveness */
+        /* Responsive Design */
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
+            h1 { font-size: 2.8rem; }
             h2 { font-size: 2rem; }
-            h3 { font-size: 1.5rem; }
-            
-            section {
-                padding: var(--spacing-lg) 0;
-            }
-
-            .header-nav {
-                padding: var(--spacing-sm) var(--spacing-md);
-            }
+            #hero { padding: 120px 0; min-height: 80vh; margin-top: -55px; } /* Adjust for nav height */
+            #hero h1 { font-size: 2.8rem; }
+            #hero p { font-size: 1.1rem; }
+            .header-nav { padding: var(--spacing-xs) 0; }
+            .nav-content { padding: 0 var(--spacing-sm); }
 
             .nav-links {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 100%;
+                top: 60px; /* Adjust based on nav height */
                 left: 0;
                 width: 100%;
-                background-color: var(--color-white);
-                box-shadow: var(--box-shadow-md);
-                padding: var(--spacing-md) 0;
-                border-top: 1px solid var(--color-border);
+                background-color: var(--color-light-bg);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                padding: var(--spacing-sm) 0;
             }
 
             .nav-links.active {
@@ -664,134 +626,112 @@
             }
 
             .nav-links li {
-                width: 100%;
+                margin: var(--spacing-xs) 0;
                 text-align: center;
             }
 
             .nav-links a {
                 display: block;
                 padding: var(--spacing-sm) var(--spacing-md);
-                width: 100%;
-            }
-            .nav-links a::after {
-                height: 1px;
-                bottom: 0px;
             }
 
             .menu-toggle {
-                display: block;
-            }
-
-            #hero {
-                padding-top: calc(var(--spacing-lg) + 4.5rem);
-                min-height: 60vh;
-            }
-            #hero h1 {
-                font-size: 2.8rem;
-            }
-            #hero p {
-                font-size: 1.2rem;
-            }
-            .hero-actions {
-                flex-direction: column;
-                gap: var(--spacing-sm);
-            }
-            .btn {
-                width: 100%;
-                max-width: 280px;
+                display: flex;
             }
 
             .features-grid, .testimonials-grid {
                 grid-template-columns: 1fr;
             }
 
-            .about-content {
+            #about .about-content {
                 flex-direction: column;
-            }
-            .about-text, .about-image {
-                flex: none;
-                width: 100%;
             }
 
-            .calculators-wrapper {
-                flex-direction: column;
-                align-items: center;
-            }
-            .calculator-card {
+            #about .image-placeholder {
                 width: 100%;
+                margin-top: var(--spacing-lg);
+            }
+
+            .calculator-grid {
+                grid-template-columns: 1fr;
             }
 
             .footer-links {
                 flex-direction: column;
-                gap: var(--spacing-sm);
+            }
+
+            .footer-links li {
+                margin: var(--spacing-xs) 0;
+            }
+
+            section {
+                padding: 60px 0;
             }
         }
 
         @media (max-width: 480px) {
-            h1 { font-size: 2rem; }
+            h1 { font-size: 2.2rem; }
             h2 { font-size: 1.8rem; }
-            h3 { font-size: 1.3rem; }
-
-            .calc-display {
-                font-size: 1.8rem;
-            }
-            .calc-buttons button {
-                padding: var(--spacing-sm);
-                font-size: 1rem;
-            }
+            #hero { padding: 100px 0; margin-top: -50px; } /* Adjust for nav height */
+            #hero h1 { font-size: 2.2rem; }
+            #hero p { font-size: 1rem; }
+            .logo { font-size: var(--spacing-lg); }
+            .calculator-display { font-size: 2rem; }
+            .calculator-buttons button { font-size: 1.2rem; padding: var(--spacing-sm); }
         }
     </style>
 </head>
 <body>
     <nav class="header-nav">
-        <div class="container">
-            <a href="#hero" class="nav-logo">Calculator</a>
-            <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+        <div class="nav-content container">
+            <a href="#hero" class="logo">Calculator</a>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#calculators">Calculators</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#hero" class="nav-link active">Home</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Tools</a></li>
+                <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <section id="hero" class="text-center">
+    <section id="hero">
         <div class="container">
-            <h1>Simplify Your Numbers: Precision Tools at Your Fingertips</h1>
-            <p>From everyday arithmetic to complex financial planning across the EU, our intuitive platform provides fast, accurate calculations designed for everyone.</p>
-            <div class="hero-actions">
-                <a href="#calculators" class="btn btn-primary">Start Calculating Now</a>
-                <a href="#about" class="btn btn-secondary">Learn More</a>
-            </div>
+            <h1>Unlock Financial Clarity with Calculator Pro</h1>
+            <p>Your go-to online tool for everyday calculations and specialized EU income estimates. Simple, fast, and accurate for everyone.</p>
+            <a href="#services" class="cta-button button">Try Our Calculators</a>
         </div>
     </section>
 
     <section id="features">
         <div class="container">
-            <h2 class="text-center">Powerful Tools Designed For You</h2>
+            <h2>Why Choose Calculator Pro?</h2>
             <div class="features-grid">
-                <div class="feature-item">
-                    <span class="icon">&#x20; &#xF058;&#xFE0E;</span> <!-- FontAwesome check-circle. Using icon font characters for simplicity in single file -->
-                    <h3>Instant Basic Calculations</h3>
-                    <p>Get quick and accurate results for all your daily arithmetic needs, perfect for quick sums and checks.</p>
+                <div class="feature-card">
+                    <div class="icon">➕</div>
+                    <h3>Everyday Calculations</h3>
+                    <p>Perform basic arithmetic, percentages, and more with our intuitive and responsive general calculator.</p>
                 </div>
-                <div class="feature-item">
-                    <span class="icon">&#x20; &#xF155;&#xFE0E;</span> <!-- FontAwesome euro-sign -->
-                    <h3>EU Income Insights</h3>
-                    <p>Calculate your estimated net income across various EU countries, helping you understand your earnings better.</p>
+                <div class="feature-card">
+                    <div class="icon">🇪🇺</div>
+                    <h3>EU Income Estimator</h3>
+                    <p>Effortlessly calculate your take-home pay in various EU countries, considering taxes and social contributions.</p>
                 </div>
-                <div class="feature-item">
-                    <span class="icon">&#x20; &#xF3C1;&#xFE0E;</span> <!-- FontAwesome wrench -->
-                    <h3>User-Friendly Interface</h3>
-                    <p>Enjoy a clean, intuitive design that makes number crunching effortless and accessible for all skill levels.</p>
+                <div class="feature-card">
+                    <div class="icon">✨</div>
+                    <h3>User-Friendly Design</h3>
+                    <p>Enjoy a clean, modern interface designed for ease of use on any device, ensuring a smooth experience.</p>
                 </div>
-                <div class="feature-item">
-                    <span class="icon">&#x20; &#xF10B;&#xFE0E;</span> <!-- FontAwesome mobile-alt -->
-                    <h3>Accessible Anywhere</h3>
-                    <p>Our responsive design ensures a seamless experience, whether you're on your desktop, tablet, or smartphone.</p>
+                <div class="feature-card">
+                    <div class="icon">🔒</div>
+                    <h3>Secure & Reliable</h3>
+                    <p>Your privacy and data accuracy are our top priorities. Trust in precise calculations every time.</p>
                 </div>
             </div>
         </div>
@@ -799,67 +739,87 @@
 
     <section id="about">
         <div class="container">
+            <h2>Our Story: Simplifying Your Numbers</h2>
             <div class="about-content">
-                <div class="about-text">
-                    <h2>Our Mission: Simplifying Your Financial World</h2>
-                    <p>At Calculator, we believe that understanding your numbers shouldn't be complicated. Our journey began with a simple idea: create a platform that demystifies calculations, offering both everyday utility and specialized tools for global citizens. We're dedicated to providing fast, reliable, and easy-to-use calculators that empower you to make informed decisions, whether it's managing household budgets or planning your career in a new EU country.</p>
-                    <p>We are constantly evolving our tools, listening to user feedback, and striving to maintain the highest standards of accuracy and user experience. Our commitment extends to simplifying complex financial landscapes, particularly for those navigating the nuances of income and taxation within the European Union. Join our growing community and experience the ease of precise calculations.</p>
+                <div class="text-content">
+                    <p>At Calculator Pro, we believe that understanding your finances shouldn't be complicated. Our journey began with a simple idea: to create a platform that makes complex calculations accessible to everyone, from students to professionals. We noticed a gap in easily accessible, country-specific financial tools, especially for the diverse economic landscape of the European Union.</p>
+                    <p>Driven by a passion for clarity and precision, we developed an online space where users can find quick answers to everyday math problems and gain insight into their net income across different EU nations. We're committed to continuous improvement, ensuring our tools are always up-to-date and user-friendly, helping you make informed decisions with confidence.</p>
                 </div>
-                <div class="about-image">
-                    <!-- Placeholder for an image or graphic -->
-                </div>
+                <div class="image-placeholder"></div>
             </div>
         </div>
     </section>
 
-    <section id="calculators">
+    <section id="services">
         <div class="container">
-            <h2 class="text-center">Interactive Calculator Tools</h2>
-            <div class="calculators-wrapper">
+            <h2>Our Powerful Calculator Tools</h2>
+            <p>Explore our range of interactive calculators designed to make your daily financial tasks simpler and faster.</p>
+            <div class="calculator-grid">
                 <div class="calculator-card">
                     <h3>Basic Arithmetic Calculator</h3>
-                    <div class="calc-display" id="calc-display">0</div>
-                    <div class="calc-buttons">
-                        <button class="clear">C</button>
-                        <button class="operator">/</button>
-                        <button class="operator">*</button>
-                        <button class="operator">-</button>
-                        <button>7</button>
-                        <button>8</button>
-                        <button>9</button>
-                        <button class="operator">+</button>
-                        <button>4</button>
-                        <button>5</button>
-                        <button>6</button>
-                        <button>1</button>
-                        <button>2</button>
-                        <button>3</button>
-                        <button class="equals" style="grid-column: span 2;">=</button>
-                        <button style="grid-column: span 2;">0</button>
-                        <button>.</button>
+                    <p>Your everyday tool for quick sums, subtractions, multiplications, and divisions.</p>
+                    <div class="basic-calculator">
+                        <div class="calculator-display" data-previous-operand></div>
+                        <div class="calculator-display" data-current-operand>0</div>
+                        <div class="calculator-buttons">
+                            <button class="clear-btn" data-clear>AC</button>
+                            <button class="operator" data-operation>±</button> <!-- Placeholder for +/- -->
+                            <button class="operator" data-operation>%</button>
+                            <button class="operator" data-operation>÷</button>
+                            <button data-number>7</button>
+                            <button data-number>8</button>
+                            <button data-number>9</button>
+                            <button class="operator" data-operation>*</button>
+                            <button data-number>4</button>
+                            <button data-number>5</button>
+                            <button data-number>6</button>
+                            <button class="operator" data-operation>-</button>
+                            <button data-number>1</button>
+                            <button data-number>2</button>
+                            <button data-number>3</button>
+                            <button class="operator" data-operation>+</button>
+                            <button data-number>0</button>
+                            <button data-number>.</button>
+                            <button class="equal-btn" data-equals>=</button>
+                        </div>
                     </div>
                 </div>
+
                 <div class="calculator-card">
-                    <h3>EU Net Income Calculator</h3>
-                    <form class="eu-calc-form" id="eu-income-form">
-                        <div class="form-group">
-                            <label for="gross-income">Gross Annual Income (€):</label>
-                            <input type="number" id="gross-income" name="gross-income" min="0" value="50000" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="eu-country">Select EU Country:</label>
+                    <h3>EU Net Income Estimator</h3>
+                    <p>Estimate your take-home salary after taxes and social contributions in selected EU countries.</p>
+                    <div class="income-calculator">
+                        <form id="eu-income-form">
+                            <label for="gross-salary">Gross Monthly Salary (€):</label>
+                            <input type="number" id="gross-salary" name="gross-salary" placeholder="e.g., 3000" min="0" step="0.01" required>
+
+                            <label for="eu-country">Country:</label>
                             <select id="eu-country" name="eu-country" required>
-                                <option value="germany">Germany (Simplified)</option>
-                                <option value="france">France (Simplified)</option>
-                                <option value="ireland">Ireland (Simplified)</option>
-                                <option value="spain">Spain (Simplified)</option>
-                                <option value="netherlands">Netherlands (Simplified)</option>
+                                <option value="">Select a country</option>
+                                <option value="DE">Germany</option>
+                                <option value="FR">France</option>
+                                <option value="ES">Spain</option>
+                                <option value="IT">Italy</option>
+                                <option value="NL">Netherlands</option>
+                                <option value="IE">Ireland</option>
+                                <option value="PT">Portugal</option>
+                                <option value="BE">Belgium</option>
+                                <option value="AT">Austria</option>
+                                <option value="SE">Sweden</option>
+                                <option value="DK">Denmark</option>
+                                <option value="FI">Finland</option>
+                                <option value="LU">Luxembourg</option>
+                                <option value="GR">Greece</option>
+                                <option value="PL">Poland</option>
+                                <option value="CZ">Czech Republic</option>
+                                <option value="HU">Hungary</option>
                             </select>
+
+                            <button type="submit">Calculate Net Salary</button>
+                        </form>
+                        <div class="result" id="net-salary-result">
+                            Net Monthly Income: <span id="net-salary-value">€0.00</span>
                         </div>
-                        <button type="submit">Calculate Net Income</button>
-                    </form>
-                    <div id="eu-result" style="display:none;">
-                        Your estimated net income: <span>€<span id="net-income-output">0.00</span></span>
                     </div>
                 </div>
             </div>
@@ -868,22 +828,19 @@
 
     <section id="testimonials">
         <div class="container">
-            <h2 class="text-center">What Our Users Say</h2>
+            <h2>What Our Users Say</h2>
             <div class="testimonials-grid">
                 <div class="testimonial-card">
-                    <div class="testimonial-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p>"This calculator has truly simplified my daily tasks. The basic calculator is quick, and the EU income tool is invaluable for my freelance work across borders!"</p>
-                    <div class="testimonial-author">- Anya Petrova, Digital Nomad</div>
+                    <p>"Calculator Pro has become my go-to for quick calculations. The EU income tool is a game-changer for my international career planning!"</p>
+                    <p class="author">- Anna K., Marketing Manager</p>
                 </div>
                 <div class="testimonial-card">
-                    <div class="testimonial-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p>"I love how clean and intuitive the interface is. It's my go-to for all calculations, and the net income estimator gave me clarity on my move to Germany."</p>
-                    <div class="testimonial-author">- David Chen, Software Engineer</div>
+                    <p>"Simple, clean, and incredibly effective. I appreciate how easy it is to use on my phone. Highly recommend for daily tasks."</p>
+                    <p class="author">- Marc P., Student</p>
                 </div>
                 <div class="testimonial-card">
-                    <div class="testimonial-rating">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
-                    <p>"A very useful site! The design is great and easy to navigate. I regularly use the basic calculator. The EU income feature is a brilliant addition."</p>
-                    <div class="testimonial-author">- Maria Garcia, Small Business Owner</div>
+                    <p>"Finally, a reliable EU income calculator that's straightforward! It saved me so much time comparing offers across different countries."</p>
+                    <p class="author">- Sofia R., Software Engineer</p>
                 </div>
             </div>
         </div>
@@ -891,260 +848,289 @@
 
     <section id="contact">
         <div class="container">
-            <h2 class="text-center">Get in Touch</h2>
-            <form class="contact-form" id="contact-form">
-                <p class="text-center" style="margin-top: -1rem;">Have questions or feedback? We'd love to hear from you.</p>
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="subject">Subject:</label>
-                    <input type="text" id="subject" name="subject" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
+            <h2>Get In Touch</h2>
+            <p>Have a question or need support? Send us a message!</p>
+            <form id="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required placeholder="Your Name">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="6" required placeholder="Your message..."></textarea>
+
                 <button type="submit">Send Message</button>
             </form>
         </div>
     </section>
 
-    <footer>
+    <footer class="footer">
         <div class="container">
             <p>&copy; 2023 Calculator. All rights reserved.</p>
             <ul class="footer-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
                 <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms of Service</a></li>
-                <li><a href="#">Sitemap</a></li>
             </ul>
         </div>
     </footer>
 
     <script>
-        // Smooth scroll for navigation links
+        // Smooth Scroll & Active Nav Link
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                const headerOffset = document.querySelector('.header-nav').offsetHeight;
-                const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                const offsetPosition = elementPosition - headerOffset - 20; // -20 for a little extra padding
-
-                window.scrollTo({
-                    top: offsetPosition,
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
 
                 // Close mobile menu if open
                 const navLinks = document.querySelector('.nav-links');
+                const menuToggle = document.querySelector('.menu-toggle');
                 if (navLinks.classList.contains('active')) {
                     navLinks.classList.remove('active');
+                    menuToggle.classList.remove('active');
                 }
             });
         });
 
-        // Mobile menu toggle
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        const options = {
+            root: null, // viewport
+            threshold: 0.3, // 30% of section visible
+            rootMargin: "-50px 0px -50px 0px" // Shrink viewport slightly
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').includes(entry.target.id)) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, options);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinksList = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinksList.classList.toggle('active');
+            menuToggle.classList.toggle('active');
         });
 
         // Contact Form Handler
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(this);
-            const data = {};
-            for (let [key, value] of formData.entries()) {
-                data[key] = value;
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (name && email && message) {
+                alert('Thank you for your message, ' + name + '! We will get back to you shortly.');
+                contactForm.reset(); // Clear the form
+            } else {
+                alert('Please fill in all fields before submitting.');
             }
-            console.log('Contact form submitted:', data);
-            alert('Thank you for your message! We will get back to you shortly.');
-            this.reset();
         });
 
         // Basic Calculator Logic
-        const calcDisplay = document.getElementById('calc-display');
-        const calcButtons = document.querySelector('.calc-buttons');
-        let currentInput = '';
-        let operator = null;
-        let firstOperand = null;
-        let waitingForSecondOperand = false;
-
-        function updateDisplay() {
-            calcDisplay.textContent = currentInput === '' ? '0' : currentInput;
-            if (currentInput.length > 10) {
-                calcDisplay.style.fontSize = '1.8rem'; // Adjust font size for long numbers
-            } else {
-                calcDisplay.style.fontSize = '2.5rem';
+        class Calculator {
+            constructor(previousOperandTextElement, currentOperandTextElement) {
+                this.previousOperandTextElement = previousOperandTextElement;
+                this.currentOperandTextElement = currentOperandTextElement;
+                this.clear();
             }
-        }
 
-        function clearCalculator() {
-            currentInput = '';
-            firstOperand = null;
-            operator = null;
-            waitingForSecondOperand = false;
-            updateDisplay();
-        }
+            clear() {
+                this.currentOperand = '0';
+                this.previousOperand = '';
+                this.operation = undefined;
+                this.updateDisplay();
+            }
 
-        function appendNumber(number) {
-            if (waitingForSecondOperand) {
-                currentInput = number;
-                waitingForSecondOperand = false;
-            } else {
-                if (currentInput === '0' && number !== '.') {
-                    currentInput = number;
-                } else if (number === '.' && currentInput.includes('.')) {
-                    // Do nothing if decimal already exists
+            appendNumber(number) {
+                if (number === '.' && this.currentOperand.includes('.')) return;
+                if (this.currentOperand === '0' && number !== '.') {
+                    this.currentOperand = number.toString();
                 } else {
-                    currentInput += number;
+                    this.currentOperand = this.currentOperand.toString() + number.toString();
                 }
             }
-            updateDisplay();
-        }
 
-        function handleOperator(nextOperator) {
-            const inputValue = parseFloat(currentInput);
-
-            if (operator && waitingForSecondOperand) {
-                operator = nextOperator;
-                return;
-            }
-
-            if (firstOperand === null && !isNaN(inputValue)) {
-                firstOperand = inputValue;
-            } else if (operator) {
-                const result = operate(firstOperand, inputValue, operator);
-                currentInput = String(result);
-                firstOperand = result;
-            }
-
-            waitingForSecondOperand = true;
-            operator = nextOperator;
-            updateDisplay();
-        }
-
-        function operate(num1, num2, op) {
-            if (op === '+') return num1 + num2;
-            if (op === '-') return num1 - num2;
-            if (op === '*') return num1 * num2;
-            if (op === '/') {
-                if (num2 === 0) {
-                    return 'Error'; // Handle division by zero
+            chooseOperation(operation) {
+                if (this.currentOperand === '') return;
+                if (this.previousOperand !== '') {
+                    this.compute();
                 }
-                return num1 / num2;
+                this.operation = operation;
+                this.previousOperand = this.currentOperand;
+                this.currentOperand = '';
             }
-            return num2; // Default for when no operator or equals is pressed
+            
+            toggleSign() {
+                if (this.currentOperand === '0' || this.currentOperand === '') return;
+                this.currentOperand = (parseFloat(this.currentOperand) * -1).toString();
+            }
+
+            compute() {
+                let computation;
+                const prev = parseFloat(this.previousOperand);
+                const current = parseFloat(this.currentOperand);
+                if (isNaN(prev) || isNaN(current)) return;
+                switch (this.operation) {
+                    case '+':
+                        computation = prev + current;
+                        break;
+                    case '-':
+                        computation = prev - current;
+                        break;
+                    case '*':
+                        computation = prev * current;
+                        break;
+                    case '÷':
+                        computation = prev / current;
+                        break;
+                    case '%': // Percentage of previousOperand (as first value)
+                        computation = prev * (current / 100);
+                        break;
+                    default:
+                        return;
+                }
+                this.currentOperand = computation.toString();
+                this.operation = undefined;
+                this.previousOperand = '';
+            }
+
+            getDisplayNumber(number) {
+                const stringNumber = number.toString();
+                const integerDigits = parseFloat(stringNumber.split('.')[0]);
+                const decimalDigits = stringNumber.split('.')[1];
+                let integerDisplay;
+                if (isNaN(integerDigits)) {
+                    integerDisplay = '';
+                } else {
+                    integerDisplay = integerDigits.toLocaleString('en', { maximumFractionDigits: 0 });
+                }
+                if (decimalDigits != null) {
+                    return `${integerDisplay}.${decimalDigits}`;
+                } else {
+                    return integerDisplay;
+                }
+            }
+
+            updateDisplay() {
+                this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand);
+                if (this.operation != null && this.previousOperand !== '') {
+                    this.previousOperandTextElement.innerText = `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`;
+                } else {
+                    this.previousOperandTextElement.innerText = '';
+                }
+            }
         }
 
-        calcButtons.addEventListener('click', (event) => {
-            const { target } = event;
+        const numberButtons = document.querySelectorAll('[data-number]');
+        const operationButtons = document.querySelectorAll('[data-operation]');
+        const equalsButton = document.querySelector('[data-equals]');
+        const clearButton = document.querySelector('[data-clear]');
+        const previousOperandTextElement = document.querySelector('[data-previous-operand]');
+        const currentOperandTextElement = document.querySelector('[data-current-operand]');
 
-            if (!target.matches('button')) {
-                return;
-            }
+        const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
 
-            if (target.classList.contains('operator')) {
-                handleOperator(target.textContent);
-                return;
-            }
-
-            if (target.classList.contains('equals')) {
-                if (firstOperand === null || operator === null) {
-                    return; // No operation to perform
-                }
-                const inputValue = parseFloat(currentInput);
-                const result = operate(firstOperand, inputValue, operator);
-                currentInput = String(result);
-                firstOperand = null; // Reset for next calculation
-                operator = null;
-                waitingForSecondOperand = false;
-                updateDisplay();
-                return;
-            }
-
-            if (target.classList.contains('clear')) {
-                clearCalculator();
-                return;
-            }
-
-            appendNumber(target.textContent);
+        numberButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                calculator.appendNumber(button.innerText);
+                calculator.updateDisplay();
+            });
         });
-        
-        // Initialize display
-        updateDisplay();
+
+        operationButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (button.innerText === '±') {
+                    calculator.toggleSign();
+                } else {
+                    calculator.chooseOperation(button.innerText);
+                }
+                calculator.updateDisplay();
+            });
+        });
+
+        equalsButton.addEventListener('click', button => {
+            calculator.compute();
+            calculator.updateDisplay();
+        });
+
+        clearButton.addEventListener('click', button => {
+            calculator.clear();
+        });
 
 
-        // EU Net Income Calculator Logic
-        document.getElementById('eu-income-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const grossIncome = parseFloat(document.getElementById('gross-income').value);
-            const country = document.getElementById('eu-country').value;
-            let netIncome = 0;
-            let taxRate = 0;
-            let socialSecurityRate = 0; // Simplified
-            let baseDeduction = 0; // Simplified
+        // EU Income Calculator Logic
+        const euIncomeForm = document.getElementById('eu-income-form');
+        const grossSalaryInput = document.getElementById('gross-salary');
+        const euCountrySelect = document.getElementById('eu-country');
+        const netSalaryValue = document.getElementById('net-salary-value');
 
-            // Simplified tax rules (for demonstration purposes only)
-            switch (country) {
-                case 'germany':
-                    // Very simplified: effective tax around 30-40% for median incomes
-                    taxRate = 0.25; // Income tax rate simplified
-                    socialSecurityRate = 0.15; // Health, pension, unemployment
-                    baseDeduction = 10000; // Basic deduction
-                    break;
-                case 'france':
-                    // Simplified: effective tax around 20-35%
-                    taxRate = 0.20;
-                    socialSecurityRate = 0.20;
-                    baseDeduction = 8000;
-                    break;
-                case 'ireland':
-                    // Simplified: effective tax around 20-30%
-                    taxRate = 0.18;
-                    socialSecurityRate = 0.08; // USC, PRSI simplified
-                    baseDeduction = 12000;
-                    break;
-                case 'spain':
-                    // Simplified: effective tax around 20-35%
-                    taxRate = 0.22;
-                    socialSecurityRate = 0.10;
-                    baseDeduction = 9000;
-                    break;
-                case 'netherlands':
-                    // Simplified: effective tax around 25-40%
-                    taxRate = 0.28;
-                    socialSecurityRate = 0.18;
-                    baseDeduction = 11000;
-                    break;
-                default:
-                    taxRate = 0.25;
-                    socialSecurityRate = 0.15;
-                    baseDeduction = 10000;
+        // Simplified tax rates for demonstration (approximate, not real-time)
+        const euTaxData = {
+            'DE': { taxRate: 0.35, socialContrib: 0.20 }, // Germany
+            'FR': { taxRate: 0.25, socialContrib: 0.23 }, // France
+            'ES': { taxRate: 0.22, socialContrib: 0.18 }, // Spain
+            'IT': { taxRate: 0.23, socialContrib: 0.20 }, // Italy
+            'NL': { taxRate: 0.30, socialContrib: 0.22 }, // Netherlands
+            'IE': { taxRate: 0.20, socialContrib: 0.10 }, // Ireland (lower example)
+            'PT': { taxRate: 0.20, socialContrib: 0.11 }, // Portugal
+            'BE': { taxRate: 0.30, socialContrib: 0.13 }, // Belgium
+            'AT': { taxRate: 0.30, socialContrib: 0.18 }, // Austria
+            'SE': { taxRate: 0.30, socialContrib: 0.31 }, // Sweden (high social contrib)
+            'DK': { taxRate: 0.40, socialContrib: 0.10 }, // Denmark (high tax, lower social)
+            'FI': { taxRate: 0.25, socialContrib: 0.15 }, // Finland
+            'LU': { taxRate: 0.15, socialContrib: 0.10 }, // Luxembourg (low tax example)
+            'GR': { taxRate: 0.20, socialContrib: 0.15 }, // Greece
+            'PL': { taxRate: 0.17, socialContrib: 0.15 }, // Poland
+            'CZ': { taxRate: 0.15, socialContrib: 0.11 }, // Czech Republic
+            'HU': { taxRate: 0.15, socialContrib: 0.18 }, // Hungary
+            // Add more countries as needed
+        };
+
+        euIncomeForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const grossSalary = parseFloat(grossSalaryInput.value);
+            const countryCode = euCountrySelect.value;
+
+            if (isNaN(grossSalary) || grossSalary <= 0 || !countryCode) {
+                alert('Please enter a valid gross salary and select a country.');
+                return;
             }
 
-            let taxableIncome = Math.max(0, grossIncome - baseDeduction);
-            let incomeTax = taxableIncome * taxRate;
-            let socialSecurity = grossIncome * socialSecurityRate;
-
-            netIncome = grossIncome - incomeTax - socialSecurity;
-
-            const netIncomeOutput = document.getElementById('net-income-output');
-            const euResultDiv = document.getElementById('eu-result');
-
-            if (isNaN(netIncome)) {
-                netIncomeOutput.textContent = 'Invalid Input';
-                euResultDiv.style.display = 'block';
-            } else {
-                netIncomeOutput.textContent = netIncome.toFixed(2);
-                euResultDiv.style.display = 'block';
+            const countryData = euTaxData[countryCode];
+            if (!countryData) {
+                alert('Tax data for the selected country is not available. Please choose another.');
+                return;
             }
+
+            const taxAmount = grossSalary * countryData.taxRate;
+            const socialContributions = grossSalary * countryData.socialContrib;
+            const netSalary = grossSalary - taxAmount - socialContributions;
+
+            netSalaryValue.innerText = `€${netSalary.toFixed(2)}`;
         });
     </script>
 </body>
