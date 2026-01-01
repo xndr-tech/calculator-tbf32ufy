@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "2.0",
   "siteId": "tbf32ufy",
   "name": "Calculator",
   "description": "A simple calculator website, with an interactive tool, and also an income calculator for residents of EU countries.",
@@ -13,6 +13,30 @@
   ],
   "tools": [],
   "model": "gemini-2.5-flash",
-  "createdAt": 1767223276940,
-  "updatedAt": 1767223276940
+  "customHtml": false,
+  "createdAt": 1767303341518,
+  "updatedAt": 1767303341518,
+  "buildMetadata": {
+    "levrVersion": "0.3.8",
+    "templateVersion": "1.0.0",
+    "templateType": "one-pager",
+    "promptVersions": {
+      "html": "1.0.0",
+      "tags": "1.0.0"
+    },
+    "workflowVersions": {
+      "deploy": "1.0.0"
+    },
+    "buildTimestamp": 1767303341518,
+    "buildId": "tbf32ufy",
+    "model": "gemini-2.5-flash",
+    "modelProvider": "gemini",
+    "modelInfo": {
+      "name": "gemini-2.5-flash",
+      "provider": "gemini",
+      "family": "gemini-2.5",
+      "version": "2.5",
+      "variant": "flash"
+    }
+  }
 }
