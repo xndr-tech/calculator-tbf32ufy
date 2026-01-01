@@ -4,9 +4,14 @@
   "private": true,
   "description": "A simple calculator website, with an interactive tool, and also an income calculator for residents of EU countries.",
   "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "deploy:preview": "wrangler deploy --env preview"
+  },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20241218.0",
-    "wrangler": "^3.96.0",
+    "@cloudflare/workers-types": "^4.20250109.0",
+    "wrangler": "^4.0.0",
     "typescript": "^5.7.2"
   }
 }

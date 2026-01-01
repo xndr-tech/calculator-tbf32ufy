@@ -87,8 +87,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-      - run: npm ci
+      - run: npm install --prefer-offline --no-audit
       - uses: cloudflare/wrangler-action@v3
         id: deploy
         with:
@@ -114,8 +113,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-      - run: npm ci
+      - run: npm install --prefer-offline --no-audit
       - uses: cloudflare/wrangler-action@v3
         id: deploy
         with:

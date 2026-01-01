@@ -14,20 +14,20 @@
   "tools": [],
   "model": "gemini-2.5-flash",
   "customHtml": false,
-  "createdAt": 1767303594335,
-  "updatedAt": 1767303594335,
+  "createdAt": 1767304379768,
+  "updatedAt": 1767304379768,
   "buildMetadata": {
     "levrVersion": "0.3.8",
-    "templateVersion": "1.0.0",
+    "templateVersion": "1.1.0",
     "templateType": "one-pager",
     "promptVersions": {
       "html": "1.0.0",
       "tags": "1.0.0"
     },
     "workflowVersions": {
-      "deploy": "1.0.0"
+      "deploy": "1.1.0"
     },
-    "buildTimestamp": 1767303594335,
+    "buildTimestamp": 1767304379768,
     "buildId": "tbf32ufy",
     "model": "gemini-2.5-flash",
     "modelProvider": "gemini",
